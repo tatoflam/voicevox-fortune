@@ -1,3 +1,43 @@
+# voicevox-fortune
+
+## 機能
+
+VOICEVOXコアライブラリのPyhton版 確認用リポジトリです。以下を実行します。
+
+- Azure Functionsに登録したAzure OpenAI (Chat Completion)を利用し、関西弁で運勢を取得
+- VOICEVOXで音声に変換
+- 変換したwavファイルを読み上げ
+
+## Install
+
+- Install via downloader: see [install-voicevox](https://hommalab.io/posts/rpi/install-voicevox/)
+- In my case, I run it on virtual environment of python 3.8.17 on pyenv on Raspberry Pi 4. 
+
+## Run
+
+```
+export AZURE_FUNCTION_KEY="<fortune API function key>"
+source env/bin/activate
+(env) python api-voice-play -h
+usage: api-voice-play.py [-h] [--mode MODE] [--dict-dir DICT_DIR] [--text TEXT] [--out OUT] [--speaker-id SPEAKER_ID]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --mode MODE           モード ("AUTO", "CPU", "GPU")
+  --dict-dir DICT_DIR   Open JTalkの辞書ディレクトリ
+  --text TEXT           読み上げさせたい文章
+  --out OUT             出力wavファイルのパス
+  --speaker-id SPEAKER_ID
+                        話者IDを指定
+
+# For example
+ python api-voice-play.py --speaker-id 30
+```
+
+```
+
+# VOICEVOX コアライブラリ READEME
+
 これは VOICEVOX コアライブラリです。
 https://github.com/Hiroshiba/voicevox_core
 
